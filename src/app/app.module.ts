@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { CommonService } from './_services/comon/common.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,9 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner,
+    CommonService
   ],
   bootstrap: [AppComponent]
 })

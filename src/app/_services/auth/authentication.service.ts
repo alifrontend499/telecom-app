@@ -7,17 +7,31 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthenticationService {
 	authenticationState = new BehaviorSubject(false)
-	constructor(private storage: Storage, private plt: Platform) { }
+	TOKEN_KEY: string = 'auth-token'
+	constructor(private storage: Storage, private plt: Platform) {
+		this.plt.ready().then(() => {
+			this.checkToken()
+		})
+	}
 
 	login(userName: string) {
-		return this.storage.set()
+		if (userName) {
+			return this.storage.set(this.TOKEN_KEY, `BEARER.${userName}`).then((res: any) => {
+				this.authenticationState.next(true)
+			})
+		}
 	}
+
 	logout() {
-
+		return this.storage.remove(this.TOKEN_KEY).then(() => {
+			this.authenticationState.next(false)
+		})
 	}
+
 	isAuthenticated() {
-
+		return this.authenticationState.value
 	}
+
 	checkToken() {
 
 	}
