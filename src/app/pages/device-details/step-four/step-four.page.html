@@ -1,0 +1,64 @@
+<ion-header class="app-header head-device-details-step-five">
+	<ion-toolbar class="app-header-toolbar">
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Device Details</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-device-details-step-four">
+	<div class="app-device-details">
+		<div class="app-device-details step-four">
+			<div class="head-sec text-center">
+				<p class="head">Select any or all issues for the device</p>
+				<p class="details">Please choose appropriate options to get accurate quote</p>
+			</div>
+			<div class="app-device-details-form">
+				<form action="#" id="stepFourForm" [formGroup]="stepFourForm" (ngSubmit)="handleSubmit($event)">
+					<div class="all-faults">
+						<div class="item" *ngFor="let fault of faults; let i = $index">
+							<div class="item-inner d-flex align-items-start">
+								<div class="lt-sec d-flex">
+									<div class="img-sec">
+										<ion-img [src]="fault.icon"></ion-img>
+									</div>
+									<div class="text-sec">
+										<p class="text">{{fault.text}}</p>
+									</div>
+								</div>
+								<div className="rt-sec d-flex">
+									<label class="app-custom-radio d-inline-block position-relative ion-activatable"
+										style="margin-right: 5px">
+										<input type="radio" class="d-none" value="yes" [name]="fault.inputName"
+											[formControlName]="fault.inputName">
+										<span class="text d-block">Yes</span>
+										<ion-ripple-effect></ion-ripple-effect>
+									</label>
+									<label class="app-custom-radio d-inline-block position-relative ion-activatable">
+										<input type="radio" class="d-none" value="no" [name]="fault.inputName"
+											[formControlName]="fault.inputName">
+										<span class="text d-block">No</span>
+										<ion-ripple-effect></ion-ripple-effect>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- submit btn -->
+					<button type="submit" class="d-none" #stepFourFORMSubmitBtn>SubmitForm</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer class=" app-footer next-btn foot-device-details-step-one">
+	<ion-toolbar class="app-footer-toolbar">
+		<ion-button color="primary" expand="block" class="m-0" [disabled]="stepFourForm.invalid"
+			(click)="submitForm($event)">
+			<span class="text-uppercase">next</span>
+			<ion-icon name="arrow-forward" class="round-icon"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-footer>

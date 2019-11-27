@@ -1,0 +1,21 @@
+<div [ngClass]="(accordLook == 'look-one') ? 'app-accordian look-one' : 'app-accordian look-two'" [class.mb-0]="noMarginBottom">
+	<div class="app-accordian-heading d-flex align-items-center">
+		<!-- look one head -->
+		<div class="text-center text-capitalize" *ngIf="accordLook == 'look-one'">{{accordHeader}}</div>
+		<!-- look two head -->
+		<div class="text-capitalize" *ngIf="accordLook == 'look-two'">
+			<p>
+				{{accordHeader}}
+				<span class="d-block">{{accordSubHead}}</span>
+			</p>
+		</div>
+		<ion-button (click)="toggleContent($event)">
+			<ion-icon [attr.name]="(accordIsShow) ? 'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
+		</ion-button>
+	</div>
+	<div class="app-accordian-content" [class.d-none]="!accordIsShow">
+		<div class="app-accordian-content-inner">
+			<ng-content></ng-content>
+		</div>
+	</div>
+</div>

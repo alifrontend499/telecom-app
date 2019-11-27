@@ -1,0 +1,244 @@
+<ion-header class="app-header head-user-details">
+	<ion-toolbar class="app-header-toolbar">
+		<!-- <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons> -->
+		<ion-title>Device Details</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-user-details">
+	<div class="app-device-details">
+		<div class="app-user-details">
+			<div class="app-user-details-inner">
+				<div class="app-user-details-form">
+					<form action="#" id="userDetailsForm" [formGroup]="userDetailsForm" (submit)="handleSubmit($event)">
+						<ion-grid class="app-grid-gap-5">
+							<ion-row>
+								<ion-col size="6">
+									<ion-item class="form-group mb-0">
+										<ion-input name="name" placeholder="Name" formControlName="name">
+										</ion-input>
+									</ion-item>
+									<!-- error msg -->
+									<div class="app-input-msg-col" style="top: 3px;"
+										[class.d-block]="userDetailsForm.get('name').invalid && userDetailsForm.get('name').touched">
+										<div class='col error'>
+											Name is required
+										</div>
+									</div>
+								</ion-col>
+								<ion-col size="6">
+									<div class="d-table mx-auto" style="margin-top: 12px;">
+										<label class="app-custom-radio d-inline-block position-relative ion-activatable"
+											style="margin-right: 5px">
+											<input type="radio" class="d-none" value="male"
+												formControlName="userGender">
+											<span class="text d-block">Male</span>
+											<ion-ripple-effect></ion-ripple-effect>
+										</label>
+										<label
+											class="app-custom-radio d-inline-block position-relative ion-activatable">
+											<input type="radio" class="d-none" value="female"
+												formControlName="userGender">
+											<span class="text d-block">Female</span>
+											<ion-ripple-effect></ion-ripple-effect>
+										</label>
+									</div>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item class="form-group mb-0">
+										<ion-input type="number" placeholder="Phone Number" formControlName="userPhoneNumber">
+										</ion-input>
+									</ion-item>
+									<!-- error msg -->
+									<div class="app-input-msg-col" style="top: 3px;"
+										[class.d-block]="userDetailsForm.get('userPhoneNumber').invalid && userDetailsForm.get('userPhoneNumber').touched">
+										<div class='col error'>
+											Phone Number is required
+										</div>
+									</div>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item class="form-group mb-0">
+										<ion-textarea placeholder="Address" formControlName="address"></ion-textarea>
+									</ion-item>
+									<!-- error msg -->
+									<div class="app-input-msg-col" style="top: 3px;"
+										[class.d-block]="userDetailsForm.get('address').invalid && userDetailsForm.get('address').touched">
+										<div class='col error'>
+											Address is required
+										</div>
+									</div>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item class="form-group mb-0">
+										<ion-input type="number" placeholder="Purchase price"
+											formControlName="purchasePrice">
+										</ion-input>
+									</ion-item>
+									<!-- error msg -->
+									<div class="app-input-msg-col" style="top: 3px;"
+										[class.d-block]="userDetailsForm.get('purchasePrice').invalid && userDetailsForm.get('purchasePrice').touched">
+										<div class='col error'>
+											Purchase price is required
+										</div>
+									</div>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item class="form-group mb-0">
+										<ion-input placeholder="User Name" formControlName="userName"></ion-input>
+									</ion-item>
+									<!-- error msg -->
+									<div class="app-input-msg-col" style="top: 3px;"
+										[class.d-block]="userDetailsForm.get('userName').invalid && userDetailsForm.get('userName').touched">
+										<div class='col error'>
+											User Name is required
+										</div>
+									</div>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item class="form-group mb-0">
+										<ion-input placeholder="Assigned Technician Name"
+											formControlName="assignedTechnicianName"></ion-input>
+									</ion-item>
+									<!-- error msg -->
+									<div class="app-input-msg-col" style="top: 3px;"
+										[class.d-block]="userDetailsForm.get('assignedTechnicianName').invalid && userDetailsForm.get('assignedTechnicianName').touched">
+										<div class='col error'>
+											Assigned Technician Name is required
+										</div>
+									</div>
+								</ion-col>
+								<ion-col size="12">
+									<app-accordian accordHeader="ID Proof" accordIsShow={{true}}
+										noMarginBottom={{true}}>
+										<div class="id-proof">
+											<div class="d-flex flex-wrap align-items-start">
+												<label
+													class="app-custom-radio d-inline-block position-relative ion-activatable"
+													*ngFor="let proof of idProofArray">
+													<input type="radio" [value]="proof.value" class="d-none"
+														(change)="takePictureForIdProof($event)"
+														formControlName="idProof">
+													<span
+														class="text d-flex align-items-center justify-content-center text-center">{{proof.text}}</span>
+													<ion-ripple-effect></ion-ripple-effect>
+												</label>
+											</div>
+											<div class="selected-img-block proof-img position-relative"
+												*ngIf="idProof.length">
+												<p class="head">ID Proof</p>
+												<ion-img [src]="idProof">
+												</ion-img>
+												<ion-button color="primary"
+													class="m-0 position-absolute img-close-icon" (click)="deleteIdProof($event)">
+													<ion-icon name="close"></ion-icon>
+												</ion-button>
+											</div>
+											{{showData | json}}
+										</div>
+										<div class="phone-and-user-info">
+											<div class="d-flex">
+												<div class="item">
+													<div class="inner text-center position-relative ion-activatable"
+														(click)="takePictureForSellerPicture($event)">
+														<ion-icon name="camera" class="w-100">
+														</ion-icon>
+														<span className="d-block">
+															Phone
+															<span class="d-block">
+																Seller Picture
+															</span>
+														</span>
+														<ion-ripple-effect></ion-ripple-effect>
+													</div>
+												</div>
+												<div class="item">
+													<div class="inner text-center position-relative ion-activatable"
+														(click)="takePictureForCustomerAgreement($event)">
+														<ion-icon name="camera" class="w-100"></ion-icon>
+														<span className="d-block">
+															Customer
+															<span class="d-block">
+																Signed Agreement
+															</span>
+														</span>
+														<ion-ripple-effect></ion-ripple-effect>
+													</div>
+												</div>
+												<div class="item">
+													<div class="inner text-center position-relative ion-activatable"
+														(click)="takePictureForPhoneIMEI($event)">
+														<ion-icon name="camera" class="w-100"></ion-icon>
+														<span className="d-block">
+															Phone
+															<span class="d-block">
+																IMEI Picture
+															</span>
+														</span>
+														<ion-ripple-effect></ion-ripple-effect>
+													</div>
+												</div>
+											</div>
+											<div class="imgs-data">
+												<div class="selected-img-block proof-img position-relative"
+													*ngIf="sellerPicture.length">
+													<p class="head">Phone Seller Picture</p>
+													<ion-img [src]="sellerPicture">
+													</ion-img>
+													<ion-button color="primary"
+														class="m-0 position-absolute img-close-icon" (click)="deleteSellerPicture($event)">
+														<ion-icon name="close"></ion-icon>
+													</ion-button>
+												</div>
+												<div class="selected-img-block proof-img position-relative"
+													*ngIf="customerAgreement.length">
+													<p class="head">Customer Signed Agreement</p>
+													<ion-img [src]="customerAgreement">
+													</ion-img>
+													<ion-button color="primary"
+														class="m-0 position-absolute img-close-icon" (click)="deleteCustomerAgreement($event)">
+														<ion-icon name="close"></ion-icon>
+													</ion-button>
+												</div>
+												<div class="selected-img-block proof-img position-relative"
+													*ngIf="phoneIMEI.length">
+													<p class="head">Phone IMEI Picture</p>
+													<ion-img [src]="phoneIMEI">
+													</ion-img>
+													<ion-button color="primary"
+														class="m-0 position-absolute img-close-icon" (click)="deletePhoneIMEI($event)">
+														<ion-icon name="close"></ion-icon>
+													</ion-button>
+												</div>
+											</div>
+										</div>
+									</app-accordian>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+						<!-- submit btn -->
+						<button type="submit" class="d-none" #userDetailsFormSubmitBtn>SubmitForm</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer class=" app-footer next-btn foot-user-details">
+	<ion-toolbar class="app-footer-toolbar">
+		<ion-button color="primary" expand="block" class="m-0" 
+			[disabled]="(userDetailsForm.invalid) || (idProof.length === 0) || (sellerPicture.length === 0) || (customerAgreement.length === 0) || (phoneIMEI.length === 0)"
+			(click)="submitForm($event)">
+			<span class="text-uppercase">next</span>
+			<ion-icon name="arrow-forward" class="round-icon"></ion-icon>
+		</ion-button>
+
+		<!-- <ion-button color="primary" expand="block" class="m-0">
+			<span class="text-uppercase">next</span>
+			<ion-icon name="arrow-forward" class="round-icon"></ion-icon>
+		</ion-button> -->
+	</ion-toolbar>
+</ion-footer>

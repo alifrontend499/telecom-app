@@ -1,0 +1,79 @@
+<ion-header class="app-header head-device-details-step-two">
+	<ion-toolbar class="app-header-toolbar">
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Device Details</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-device-details-step-two">
+	<div class="app-device-details">
+		<div class="app-device-details step-two">
+			<div class="head-sec text-center">
+				<p class="head">Screen condition of the device</p>
+				<p class="details">Please choose appropriate options to get accurate quote</p>
+			</div>
+			<div class="app-device-details-form">
+				<form action="#" id="stepTwoForm" [formGroup]="stepTwoForm" (ngSubmit)="handleSubmit($event)">
+					<app-accordian accordLook="look-two" accordHeader="Is the touch working?"
+						accordSubHead="-select issue" accordIsShow={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="touchIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of touchIssuesArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<app-accordian accordLook="look-two" accordHeader="Are there any visible spots on the display?"
+						accordSubHead="-select issue" accordIsShow={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="displaySpotsIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of displaySpotsArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<app-accordian accordLook="look-two" accordHeader="Are there any visible lines on the display?"
+						accordSubHead="-select issue" accordIsShow={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="displayLinesIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of displayLinesArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<app-accordian accordLook="look-two" accordHeader="Is the screen scratched or cracked?"
+						accordSubHead="-select issue" accordIsShow={{true}} noMarginBottom={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="crackedScreenIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of crackedScreenArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<!-- submit btn -->
+					<button type="submit" class="d-none" #stepTwoFORMSubmitBtn>SubmitForm</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer class=" app-footer next-btn foot-device-details-step-one">
+	<ion-toolbar class="app-footer-toolbar">
+		<ion-button color="primary" expand="block" class="m-0"
+			[disabled]="stepTwoForm.invalid" (click)="submitForm($event)">
+			<span class="text-uppercase">next</span>
+			<ion-icon name="arrow-forward" class="round-icon"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-footer>

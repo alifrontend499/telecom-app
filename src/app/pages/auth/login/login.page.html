@@ -1,0 +1,65 @@
+<ion-header class="app-header head-login">
+	<ion-toolbar class="app-header-toolbar"></ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-login">
+	<div class="app-auth-content login h-100 w-100 d-flex align-items-center justify-content-center">
+		<div class="app-auth-inner d-flex flex-wrap align-items-center h-100 w-100">
+			<div class="formwrapper w-100">
+				<div class="logo-sec">
+					<ion-img src="assets/images/logo.png"></ion-img>
+				</div>
+				<div class="auth-form">
+					<form action="#" (keyup.enter)="handleSubmit($event)" (submit)="handleSubmit($event)" #loginForm="ngForm">
+						<ion-item class="form-group">
+							<ion-label>
+								<ion-icon name="person" color="primary"></ion-icon>
+							</ion-label>
+							<ion-input name="username" placeholder="Username" #username="ngModel" value="userName"
+								[(ngModel)]="userName" required>
+							</ion-input>
+						</ion-item>
+						<div class="app-input-msg-col alittle-top"
+							[class.d-block]="username.invalid && username.touched">
+							<div class='col error'>
+								Username is required
+							</div>
+						</div>
+						<ion-item class="form-group">
+							<ion-label>
+								<ion-icon name="lock" color="primary"></ion-icon>
+							</ion-label>
+							<ion-input name="password" type="password" placeholder="Password" #password="ngModel"
+								[(ngModel)]="userPassword" required min="10">
+							</ion-input>
+						</ion-item>
+						<div class="app-input-msg-col alittle-top"
+							[class.d-block]="password.invalid && password.touched">
+							<div class='col error'>
+								Password is required
+							</div>
+						</div>
+						<div class="forgot-pass">
+							<a href="" color="secondary">Forgot password?</a>
+						</div>
+						<div class="submit-btn d-flex justify-content-center">
+							<ion-button type="submit" color="primary" class="app-def-btn" [disabled]="!loginForm.valid">
+								Sign in
+							</ion-button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="add-option w-100 align-self-end">
+				<p>
+					Don’t have an account?
+					<a href="#">Sign Up</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer class="app-footer foot-login">
+	<ion-toolbar class="app-footer-toolbar"></ion-toolbar>
+</ion-footer>

@@ -1,0 +1,78 @@
+// user details css
+.app-user-details {
+
+    .selected-img-block {
+        border: 1px solid #dedede;
+        padding: 5px;
+        background: #efefef;
+        margin-top: 5px;
+
+        .head {
+            margin: 0 0 5px 0;
+            font-size: 11px;
+            background: #e0e0e0;
+            padding: 2px 5px 1px;
+            color: #333;
+        }
+
+        ion-img {
+            height: 150px;
+        }
+    }
+
+    // id-proof
+    .id-proof {
+        >.d-flex {
+            margin: 0 -3px;
+        }
+
+        padding: 10px 0 calc(10px - 6px);
+
+        .app-custom-radio {
+            margin: 0 3px 6px;
+
+            >span {
+                min-height: 40px;
+                padding-left: 9px;
+                padding-right: 9px;
+            }
+        }
+    }
+
+    // phone-and-user-info
+    .phone-and-user-info {
+        margin: 5px 0 10px;
+
+        >.d-flex {
+            margin: 0 -2px;
+        }
+
+        .item {
+            width: 33.3%;
+            padding: 0 2px;
+
+            >.inner {
+                background-color: #696969;
+                padding: 4px 2px 4px;
+                font-family: 'proxima-thin';
+                line-height: 13px;
+
+                >ion-icon,
+                >span {
+                    color: #fff;
+                }
+
+                ion-icon {
+                    font-size: 14px;
+                    display: block;
+                    margin: 0 auto;                
+                }
+
+                span {
+                    color: #fff;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}

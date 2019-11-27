@@ -1,0 +1,141 @@
+// device details css
+.app-device-details {
+
+    .head-sec {
+        margin-bottom: 25px;
+
+        .head {
+            font: 19px proxima-bold, sans-serif;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .details {
+            font-size: 13px;
+            color: #808080;
+        }
+    }
+
+    // step one css
+    &.step-one {
+        .app-device-details-form {
+            .mobile-description {
+                .item {
+                    margin: 0 -10px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding-top: calc(5px + 6px);
+                    padding-bottom: 5px;
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid #dedede;
+                    }
+
+                    .item-inner {
+                        .head {
+                            color: var(--ion-color-primary);
+                            width: 80px;
+                            padding-right: 10px;
+                            font-size: 16px;
+                            padding-top: 5px;
+                        }
+
+                        .options {
+                            width: calc(100% - 80px);
+                            padding: 3px;
+
+                            .labels {
+                                margin: 0 -3px;
+                            }
+
+                            label {
+                                margin: 0 3px 6px;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .selected-img {
+                .item {
+                    .inner {
+                        height: 70px;
+                        // box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+                        border: 1px solid #e9e9e9;
+
+                        img {
+                            max-height: 100% !important;
+                        }
+
+                        ion-img {
+                            height: 70px;
+                            max-height: 100% !important;
+                            max-width: 100% !important;
+                        }
+                    }
+                }
+
+                .select-img-button {
+                    ion-icon {
+                        height: 15px;
+                        width: 15px;
+                        margin-left: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    // step four css
+    &.step-four {
+        .all-faults {
+            .item {
+                &:not(:last-child) {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .item-inner {
+                >.lt-sec {
+                    width: calc(100% - 85px);
+                    padding-right: 5px;
+
+                    .img-sec {
+                        width: 25px;
+                        height: 25px;
+
+                        // img {
+                        //     max-height: 100%;
+                        //     display: block;
+                        //     margin: 0 auto;
+                        // }
+                        ion-img {
+                            height: 25px;
+                            width: 25px;
+                        }
+                    }
+
+                    .text-sec {
+                        width: calc(100% - 25px);
+                        padding-left: 10px;
+
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                >.rt-sec {
+                    width: 85px;
+
+                    >label {
+                        width: 50%;
+                        text-align: center;
+                    }
+
+                }
+            }
+        }
+    }
+}

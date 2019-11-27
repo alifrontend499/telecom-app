@@ -1,0 +1,79 @@
+<ion-header class="app-header head-device-details-step-three">
+	<ion-toolbar class="app-header-toolbar">
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Device Details</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-device-details-step-three">
+	<div class="app-device-details">
+		<div class="app-device-details step-two">
+			<div class="head-sec text-center">
+				<p class="head">Physical condition of the device</p>
+				<p class="details">Please choose appropriate options to get accurate quote</p>
+			</div>
+			<div class="app-device-details-form">
+				<form action="#" id="stepThreeForm" [formGroup]="stepThreeForm" (ngSubmit)="handleSubmit($event)">
+					<app-accordian accordLook="look-two" accordHeader="Are there any scratches on phone body?"
+						accordSubHead="-select issue" accordIsShow={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="dentsOnPhoneIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of dentsOnPhoneArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<app-accordian accordLook="look-two" accordHeader="Are there any dents on phone body?"
+						accordSubHead="-select issue" accordIsShow={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="backPanelIssuesIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of backPanelIssuesArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<app-accordian accordLook="look-two" accordHeader="What is the condition of side and back panel?"
+						accordSubHead="-select issue" accordIsShow={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="bodyLinesIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of bodyLinesArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<app-accordian accordLook="look-two" accordHeader="Is the phone bent or screen loose?"
+						accordSubHead="-select issue" accordIsShow={{true}} noMarginBottom={{true}}>
+						<div className="checkboxes-options">
+							<ion-radio-group formControlName="bentPhoneIssues">
+								<ion-item class="app-default-radio" *ngFor="let issue of bentPhoneArray">
+									<ion-label>{{issue.val}}</ion-label>
+									<ion-radio slot="end" [name]="issue.name" [value]="issue.val"></ion-radio>
+								</ion-item>
+							</ion-radio-group>
+						</div>
+					</app-accordian>
+					<!-- submit btn -->
+					<button type="submit" class="d-none" #stepThreeFORMSubmitBtn>SubmitForm</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer class=" app-footer next-btn foot-device-details-step-one">
+	<ion-toolbar class="app-footer-toolbar">
+		<ion-button color="primary" expand="block" class="m-0" [disabled]="stepThreeForm.invalid"
+			(click)="submitForm($event)">
+			<span class="text-uppercase">next</span>
+			<ion-icon name="arrow-forward" class="round-icon"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-footer>

@@ -1,0 +1,61 @@
+// app otp css
+.app-otp {
+    .otp-img-sec {
+        ion-img {
+            height: 90px;
+        }
+
+        .head {
+            font: 22px "proxima-bold", sans-serif;
+            margin-top: 25px;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .desc {
+            font-size: 15px;
+            color: #666;
+
+            .text {
+                font-weight: bold;
+                color: #333;
+            }
+        }
+    }
+
+    .otp-img-form {
+        margin-top: 30px;
+        ion-input {
+            font-weight: normal !important;
+            font-size: 16px !important;
+        }
+        .app-def-btn {
+            margin-top: 20px;
+        }
+    }
+
+    &.verificaton {
+        .otp-img-form {
+            ion-input {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .send-otp {
+                margin-top: 15px;
+
+                p {
+                    font-size: 14px;
+                    color: #666;
+
+                    .send-otp-again {
+                        color: var(--ion-color-primary);
+                        margin-left: 7px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

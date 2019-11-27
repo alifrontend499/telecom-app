@@ -1,0 +1,43 @@
+<ion-header class="app-header head-otp">
+	<ion-toolbar class="app-header-toolbar">
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/"></ion-back-button>
+		</ion-buttons>
+		<ion-title>OTP</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-otp">
+	<div class="app-otp h-100 w-100 d-flex align-items-center justify-content-center">
+		<div class="app-otp-main w-100">
+			<div class="otp-img-sec text-center">
+				<ion-img [src]="mobileIcon"></ion-img>
+				<p class="head">OTP Verification</p>
+				<p class="desc">
+					we will send you <span class="text">One Time Password</span> <br />
+					on this mobile number
+				</p>
+			</div>
+			<div class="otp-img-form">
+				<form action="#" id="otpForm" #otpForm="ngForm" (submit)="handleSubmit($event)">
+					<ion-item class="form-group">
+						<ion-input type="number" name="mobile-no" placeholder="Enter Mobile No." #mobileNumber="ngModel" [(ngModel)]="mobile" required></ion-input>
+					</ion-item>
+					<div class="app-input-msg-col alittle-top"
+						[class.d-block]="mobileNumber.invalid && mobileNumber.touched">
+						<div class='col error'>
+							Mobile Number is required
+						</div>
+					</div>
+					<ion-button type="submit" color="primary" expand="block" class="app-def-btn def-height" [disabled]="!otpForm.valid">
+						<span>Submit</span>
+					</ion-button>
+				</form>
+			</div>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer class="app-footer foot-user-details">
+	<ion-toolbar class="app-footer-toolbar"></ion-toolbar>
+</ion-footer>
