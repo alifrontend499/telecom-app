@@ -33,7 +33,11 @@ export class AuthenticationService {
 	}
 
 	checkToken() {
-
+		return this.storage.get(this.TOKEN_KEY).then((res: any) => {
+			if (res) {
+				this.authenticationState.next(true)
+			}
+		})
 	}
 
 }

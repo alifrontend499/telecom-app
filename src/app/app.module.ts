@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CommonService } from './_services/comon/common.service';
+import { AuthenticationService } from './_services/auth/authentication.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,8 @@ import { CommonService } from './_services/comon/common.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
-    CommonService
+    CommonService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

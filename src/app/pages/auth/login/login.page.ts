@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { CommonService } from 'src/app/_services/comon/common.service'
 import { Router } from '@angular/router'
+import { AuthenticationService } from '../../../_services/auth/authentication.service'
 
 
 @Component({
@@ -13,10 +14,10 @@ export class LoginPage implements OnInit {
 	loginForm: HTMLFormElement = null
 	userName: string = ""
 	userPassword: string = ""
-	constructor(private comServ: CommonService, private router: Router) { }
+	constructor(private comServ: CommonService, private router: Router, private authServ: AuthenticationService) { }
 
 	ngOnInit() {
-
+		console.log(this.authServ.isAuthenticated)
 	}
 	// handle submit for login
 	handleSubmit(ev: KeyboardEvent): void {
