@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
 	constructor(private comServ: CommonService, private router: Router, private authServ: AuthenticationService) { }
 
 	ngOnInit() {
-		console.log(this.authServ.isAuthenticated)
+		// console.log(this.authServ.isAuthenticated)
 	}
 	// handle submit for login
 	handleSubmit(ev: KeyboardEvent): void {

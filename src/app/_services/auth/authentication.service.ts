@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
 	providedIn: 'root'
@@ -14,16 +15,16 @@ export class AuthenticationService {
 		})
 	}
 
-	login(userName: string) {
+	async login(userName: string) {
 		if (userName) {
-			return this.storage.set(this.TOKEN_KEY, `BEARER.${userName}`).then((res: any) => {
+			return await this.storage.set(this.TOKEN_KEY, `BEARER.${userName}`).then((res: any) => {
 				this.authenticationState.next(true)
 			})
 		}
 	}
 
-	logout() {
-		return this.storage.remove(this.TOKEN_KEY).then(() => {
+	async logout() {
+		return await this.storage.remove(this.TOKEN_KEY).then(() => {
 			this.authenticationState.next(false)
 		})
 	}
@@ -32,8 +33,8 @@ export class AuthenticationService {
 		return this.authenticationState.value
 	}
 
-	checkToken() {
-		return this.storage.get(this.TOKEN_KEY).then((res: any) => {
+	async checkToken() {
+		return await this.storage.get(this.TOKEN_KEY).then((res: any) => {
 			if (res) {
 				this.authenticationState.next(true)
 			}
