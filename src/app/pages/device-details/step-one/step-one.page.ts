@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonService } from 'src/app/_services/comon/common.service';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+// import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class StepOnePage implements OnInit {
 	constructor(
 		private comServ: CommonService,
-		private barcodeScanner: BarcodeScanner,
+		// private barcodeScanner: BarcodeScanner,
 		private fb: FormBuilder,
 		private router: Router
 	) { }
@@ -60,22 +60,22 @@ export class StepOnePage implements OnInit {
 
 	// scaning barcode
 	scanBarcode(ev: KeyboardEvent) {
-		this.barcodeScanner.scan().then(barcodeData => {
-			if (barcodeData.cancelled !== true && barcodeData.format !== "QR_CODE") {
-				// this.stepOneForm.controls['deviceIMEI'].setValue(barcodeData.text)
-				this.stepOneForm.patchValue({
-					deviceIMEI: barcodeData.text
-				})
-			}
-			if (barcodeData.cancelled) {
-				this.comServ.showToast('Operation canceled')
-			}
-			if (barcodeData.format === "QR_CODE") {
-				this.comServ.showToast('Please select barcode of IMEI no.')
-			}
-		}).catch(err => {
-			console.log('Error', err);
-		});
+		// this.barcodeScanner.scan().then(barcodeData => {
+		// 	if (barcodeData.cancelled !== true && barcodeData.format !== "QR_CODE") {
+		// 		// this.stepOneForm.controls['deviceIMEI'].setValue(barcodeData.text)
+		// 		this.stepOneForm.patchValue({
+		// 			deviceIMEI: barcodeData.text
+		// 		})
+		// 	}
+		// 	if (barcodeData.cancelled) {
+		// 		this.comServ.showToast('Operation canceled')
+		// 	}
+		// 	if (barcodeData.format === "QR_CODE") {
+		// 		this.comServ.showToast('Please select barcode of IMEI no.')
+		// 	}
+		// }).catch(err => {
+		// 	console.log('Error', err);
+		// });
 	}
 
 	@ViewChild('stepOneFORMSubmitBtn', { static: false }) stepOneFORMSubmitBtn: ElementRef
