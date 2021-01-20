@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">telecomapp</string>
+    <string name="title_activity_main">telecomapp</string>
+    <string name="package_name">com.telecomapp.app</string>
+    <string name="custom_url_scheme">com.telecomapp.app</string>
+</resources>
